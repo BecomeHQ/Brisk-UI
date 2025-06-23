@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://briskdashboard.become.team/";
+const API_BASE_URL = "https://briskdashboard.become.team";
 
 export interface ApiResponse<T> {
   data: T;
