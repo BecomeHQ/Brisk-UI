@@ -12,7 +12,7 @@ const leaveRoutes = require("./routes/leaves");
 const userRoutes = require("./routes/users");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 1099;
 
 // Connect to MongoDB
 connectDB();
