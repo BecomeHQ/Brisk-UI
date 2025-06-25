@@ -229,7 +229,6 @@ export function LeaveManagementDialog({
                       <TableHead>Duration</TableHead>
                       <TableHead>Days</TableHead>
                       <TableHead>Status</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -277,28 +276,6 @@ export function LeaveManagementDialog({
                               >
                                 Rejected
                               </Badge>
-                            )}
-                          </TableCell>
-                          <TableCell className="text-right">
-                            {request.status === "Pending" && (
-                              <div className="flex justify-end gap-2">
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8 text-success"
-                                  onClick={() => handleApprove(request._id)}
-                                >
-                                  <CheckCircle size={16} />
-                                </Button>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8 text-danger"
-                                  onClick={() => handleReject(request._id)}
-                                >
-                                  <XCircle size={16} />
-                                </Button>
-                              </div>
                             )}
                           </TableCell>
                         </TableRow>

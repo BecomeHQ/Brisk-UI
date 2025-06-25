@@ -206,13 +206,6 @@ const WorkLifeBalancePage = () => {
                       </span>
                     </div>
                   </div>
-
-                  <Link
-                    to={`/employees/${employee.id}`}
-                    className="mt-4 text-xs text-brisk-600 font-medium hover:underline block text-center"
-                  >
-                    View employee profile
-                  </Link>
                 </div>
               ))}
             </div>
