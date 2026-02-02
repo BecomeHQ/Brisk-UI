@@ -8,8 +8,8 @@ export default function Sidebar() {
   const navItems = [
     { icon: Home, label: "Dashboard", path: "/" },
     { icon: Users, label: "Employees", path: "/employees" },
-    { icon: BarChart2, label: "Reports", path: "/reports" },
-    { icon: FileText, label: "Documentation", path: "/docs" },
+    // { icon: BarChart2, label: "Reports", path: "/reports" },
+    // { icon: FileText, label: "Documentation", path: "/docs" },
   ];
 
   return (
