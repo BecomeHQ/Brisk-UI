@@ -22,16 +22,16 @@ interface EmployeeTableProps {
 // Total leaves per person configuration
 const totalLeaves = {
   sickLeave: 12,
-  casualLeave: 6,
-  burnout: 6,
+  casualLeave: 8,
+  burnout: 8,
   mensuralLeaves: 18,
   unpaidLeave: 20,
   internshipLeave: 10,
   wfhLeave: 10,
   bereavementLeave: 5,
-  maternityLeave: 13,
+  maternityLeave: 65, // 13 weeks
   paternityLeave: 20,
-  restrictedHoliday: 6,
+  restrictedHoliday: 4,
 };
 
 // Database user interface
