@@ -5,6 +5,7 @@ import {
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { TeamLeaveCalendar } from "@/components/dashboard/TeamLeaveCalendar";
 import { LeaveManagementDialog } from "@/components/dashboard/LeaveManagementDialog";
+import { EmployeesOnLeaveDialog } from "@/components/dashboard/EmployeesOnLeaveDialog";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { getHighBurnoutRiskEmployees, teamLeaves } from "@/services/mockData";
@@ -30,6 +31,8 @@ import { TeamMetrics } from "@/services/employees/types";
 
 const Dashboard = () => {
   const [isLeaveDialogOpen, setIsLeaveDialogOpen] = useState(false);
+  const [isOnLeaveTodayDialogOpen, setIsOnLeaveTodayDialogOpen] =
+    useState(false);
   const [employeesOnLeaveToday, setEmployeesOnLeaveToday] = useState<string[]>(
     []
   );
@@ -178,7 +181,10 @@ const Dashboard = () => {
 
           {/* High priority leave metrics - First row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <Link to="#" className="block h-full">
+            <div
+              className="block h-full cursor-pointer"
+              onClick={() => setIsOnLeaveTodayDialogOpen(true)}
+            >
               <MetricCard
                 title="On Leave Today"
                 value={loading ? "..." : employeesOnLeaveToday.length}
@@ -198,7 +204,7 @@ const Dashboard = () => {
                   employeesOnLeaveToday.length > 3 ? "warning" : "default"
                 }
               />
-            </Link>
+            </div>
 
             <Link to="#" className="block h-full">
               <MetricCard
@@ -365,6 +371,13 @@ const Dashboard = () => {
       <LeaveManagementDialog
         isOpen={isLeaveDialogOpen}
         onClose={() => setIsLeaveDialogOpen(false)}
+      />
+      <EmployeesOnLeaveDialog
+        isOpen={isOnLeaveTodayDialogOpen}
+        onClose={() => setIsOnLeaveTodayDialogOpen(false)}
+        employees={employeesOnLeaveToday}
+        loading={loading}
+        error={error}
       />
     </Layout>
   );
