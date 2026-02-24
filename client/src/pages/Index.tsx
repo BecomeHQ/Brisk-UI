@@ -33,6 +33,8 @@ const Dashboard = () => {
   const [isLeaveDialogOpen, setIsLeaveDialogOpen] = useState(false);
   const [isOnLeaveTodayDialogOpen, setIsOnLeaveTodayDialogOpen] =
     useState(false);
+  const [isOnLeaveNextWeekDialogOpen, setIsOnLeaveNextWeekDialogOpen] =
+    useState(false);
   const [employeesOnLeaveToday, setEmployeesOnLeaveToday] = useState<string[]>(
     []
   );
@@ -206,7 +208,10 @@ const Dashboard = () => {
               />
             </div>
 
-            <Link to="#" className="block h-full">
+            <div
+              className="block h-full cursor-pointer"
+              onClick={() => setIsOnLeaveNextWeekDialogOpen(true)}
+            >
               <MetricCard
                 title="On Leave Next Week"
                 value={
@@ -228,7 +233,7 @@ const Dashboard = () => {
                   employeesOnLeaveNextWeek.length > 5 ? "warning" : "default"
                 }
               />
-            </Link>
+            </div>
 
             <div
               className="block h-full cursor-pointer"
@@ -378,6 +383,16 @@ const Dashboard = () => {
         employees={employeesOnLeaveToday}
         loading={loading}
         error={error}
+      />
+      <EmployeesOnLeaveDialog
+        isOpen={isOnLeaveNextWeekDialogOpen}
+        onClose={() => setIsOnLeaveNextWeekDialogOpen(false)}
+        employees={employeesOnLeaveNextWeek}
+        loading={nextWeekLoading}
+        error={nextWeekError}
+        title="On Leave Next Week"
+        loadingText="Loading planned leaves..."
+        emptyText="No planned leaves next week."
       />
     </Layout>
   );

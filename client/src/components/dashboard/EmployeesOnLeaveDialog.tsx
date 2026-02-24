@@ -11,6 +11,9 @@ interface EmployeesOnLeaveDialogProps {
   employees: string[];
   loading: boolean;
   error: string | null;
+  title?: string;
+  loadingText?: string;
+  emptyText?: string;
 }
 
 export function EmployeesOnLeaveDialog({
@@ -19,18 +22,21 @@ export function EmployeesOnLeaveDialog({
   employees,
   loading,
   error,
+  title = "On Leave Today",
+  loadingText = "Loading employees on leave...",
+  emptyText = "No one is on leave today.",
 }: EmployeesOnLeaveDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>On Leave Today</DialogTitle>
+          <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-3">
           {loading ? (
             <div className="flex items-center justify-center py-6 text-sm text-neutral-600">
-              Loading employees on leave...
+              {loadingText}
             </div>
           ) : error ? (
             <div className="flex items-center justify-center py-6 text-sm text-red-600">
@@ -38,7 +44,7 @@ export function EmployeesOnLeaveDialog({
             </div>
           ) : employees.length === 0 ? (
             <div className="flex items-center justify-center py-6 text-sm text-neutral-600">
-              No one is on leave today.
+              {emptyText}
             </div>
           ) : (
             <ul className="max-h-64 space-y-2 overflow-y-auto">
